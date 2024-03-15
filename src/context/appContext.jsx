@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 
 export const AppContext = createContext();
 
@@ -10,7 +10,7 @@ export default function AppContextProvider({children}) {
   // placeholder for the get requests (POSTS)
   useEffect(() => {
 
-    const fetchPostData = async () => {
+    const fetchData = async () => {
     try {
       const response = await fetch('https://jsonplaceholder.typicode.com/posts')
       const data = await response.json()
@@ -20,7 +20,7 @@ export default function AppContextProvider({children}) {
       throw new Error('Error fetching the posts')
     }
     }
-    fetchPostData()
+    fetchData()
   }, [])
 
   // placeholder for the get requests (USERS)
@@ -42,7 +42,7 @@ export default function AppContextProvider({children}) {
 
 
   return (
-    <AppContext.Provider value={{posts, users}}>
+    <AppContext.Provider value={{posts, users, loading}}>
       {!loading && children}
     </AppContext.Provider>
   )

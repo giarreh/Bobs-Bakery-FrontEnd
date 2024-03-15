@@ -10,10 +10,10 @@ function App() {
   return (
     <AppContextProvider>
       <Header />
-      <div className="content">
-        <Sidebar />
-        <MainBody />
-      </div>
+        <div className="content">
+          <Sidebar />
+          <MainBody />
+        </div>
     </AppContextProvider>
   );
 }
