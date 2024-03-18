@@ -7,6 +7,7 @@ import PostList from './components/posts/PostList';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import PrivateRoutes from './components/PrivateRoutes';
 import Signup from './components/auth/Signup';
+import Login from './components/auth/Login';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/posts" element={<PostList />} />
               </Route>
                 <Route path="/signup" element={<Signup />} />
+                <Route path="/login" element={<Login />} />
               </Routes>
             </main>
           </div>
