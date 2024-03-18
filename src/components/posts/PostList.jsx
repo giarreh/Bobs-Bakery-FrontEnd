@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { AppContext } from '../../Context/appContext'
+import { AppContext } from '../../Context/AppContext'
 
 export default function PostList() {
   const { posts } = useContext(AppContext)
