@@ -1,5 +1,5 @@
 import './App.css';
-import AppContextProvider from './Context/AppContext';
+import AppContextProvider from './context/AppContext';
 import MainBody from './components/MainBody';
 import Sidebar from './components/Sidebar';
 import Header from './components/header';
