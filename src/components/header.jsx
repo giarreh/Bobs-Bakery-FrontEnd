@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
+import logo from '../assets/Bobs_Bakery.svg'
 
 function Header() {
   const { user, setUser } = useContext(UserContext);
@@ -9,7 +10,9 @@ function Header() {
   return (
     <header className="header">
       <div>
-        <div >LOGO</div>
+        <div style={{ cursor: 'pointer' }} onClick={() => navigate("/")} >
+          <img src={logo} alt="Bobs Bakery" width={32*5} height={16*5} />
+        </div>
       </div>
       <div>
         {user ? (
