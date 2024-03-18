@@ -16,8 +16,17 @@
 .header {
   background-color: #007bff;
   color: #fff;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+.headerLoggedIn {
+  display: flex;
+  align-items: center;
+}
+.headerLoggedIn p {
+  margin-right: 10px; /* Adjust the spacing as needed */
 }
 
 /* Main body styles */

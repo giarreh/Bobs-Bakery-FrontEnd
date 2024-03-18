@@ -66,6 +66,7 @@ export default function Signup() {
           onChange={(e) => setForm({ ...form, favoriteColor: e.target.value })}
         />
         <button onClick={handleSubmit}>Sign up</button>
+        <button onClick={() => {setUser(true); navigate('/posts')}}>TEST USER</button>
       </form>
     </div>
   );
