@@ -4,6 +4,7 @@ import MainBody from './components/MainBody';
 import Sidebar from './components/Sidebar';
 import Header from './components/header';
 import UserContextProvider from './context/UserContext';
+import PostList from './components/posts/PostList';
 
 
 
@@ -14,7 +15,9 @@ function App() {
       <Header />
         <div className="content">
           <Sidebar />
-          <MainBody />
+          <main className="main">
+            <PostList />
+          </main>
         </div>
       </AppContextProvider>
     </UserContextProvider>
