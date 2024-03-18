@@ -7,15 +7,16 @@
 
 /* Sidebar styles */
 .sidebar {
-  background-color: #FFEEE0;
+  background-color: #E3E4DB;
   color: #fff;
   padding: 20px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  margin-top: 2px;
+  border-right: 1px solid #ccc;
 }
 
 /* Header styles */
 .header {
-  background-color: #FFEEE0;
+  background-color: #9CBFA7;
   color: #fff;
   padding: 10px;
   text-align: center;
@@ -29,7 +30,7 @@
   align-items: center;
 }
 .headerLoggedIn p {
-  color: grey;
+  color: white;
   margin-right: 10px; /* Adjust the spacing as needed */
   justify-content: center;
   align-items: center;
