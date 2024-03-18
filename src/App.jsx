@@ -6,6 +6,7 @@ import UserContextProvider from './context/UserContext';
 import PostList from './components/posts/PostList';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import PrivateRoutes from './components/PrivateRoutes';
+import Signup from './components/auth/Signup';
 
 
 function App() {
@@ -18,8 +19,12 @@ function App() {
             <Sidebar />
             <main className="main">
               <Routes>
-                <Route path="/" element={<PrivateRoutes />} />
+                {/* ROUTES nested inside PrivateRoutes route requires that the user is signed in */}
+              <Route element={<PrivateRoutes/>}>
+                <Route path="/" element={<PostList />} />
                 <Route path="/posts" element={<PostList />} />
+              </Route>
+                <Route path="/signup" element={<Signup />} />
               </Routes>
             </main>
           </div>
