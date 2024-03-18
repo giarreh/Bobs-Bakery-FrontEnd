@@ -4,6 +4,7 @@ import { useContext, useState } from 'react';
 import { UserContext } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import './Signup.css';
+import { SketchPicker } from 'react-color';
 
 export default function Signup() {
   const { setUser } = useContext(UserContext);
@@ -17,6 +18,16 @@ export default function Signup() {
     email: '',
     favoriteColor: '',
   });
+
+  const [color, setColor] = useState('#ffffff'); // State for the selected color
+  const handleColorChange = (newColor) => {
+    setColor(newColor.hex);
+    setForm({ ...form, favoriteColor: newColor.hex }); // Update form state with new color
+  };
+  const [showColorPicker, setShowColorPicker] = useState(false); // State for showing/hiding the color picker
+  const toggleColorPicker = () => {
+    setShowColorPicker(!showColorPicker);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -59,12 +70,19 @@ export default function Signup() {
           value={form.email}
           onChange={(e) => setForm({ ...form, email: e.target.value })}
         />
-        <input
-          type="text"
-          placeholder="Favorite Color"
-          value={form.favoriteColor}
-          onChange={(e) => setForm({ ...form, favoriteColor: e.target.value })}
-        />
+        <div>
+          <label htmlFor="color">Favorite Color</label>
+          <input
+            type="text"
+            id="color"
+            value={color}
+            onChange={(e) => setForm({ ...form, favoriteColor: e.target.value })}
+          />
+        </div>
+        <button onClick={toggleColorPicker}>Pick a color</button>
+        {showColorPicker && ( // Show color picker if showColorPicker is true
+          <SketchPicker color={color} onChange={handleColorChange} />
+        )}
         <button onClick={handleSubmit}>Sign up</button>
         <button onClick={() => {setUser(true); navigate('/posts')}}>TEST USER</button>
       </form>
