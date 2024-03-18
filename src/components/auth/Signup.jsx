@@ -1,8 +1,11 @@
 import { useContext, useState } from 'react'
 import { UserContext } from '../../context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 export default function Signup() {
   const {user, setUser} = useContext(UserContext);
+  const navigate = useNavigate();
+
 
   const [form, setForm] = useState({
     username: '',
@@ -18,6 +21,7 @@ export default function Signup() {
     e.preventDefault();
     setUser(form);
     console.log('User signed up: ', form)
+    navigate('/posts');
   }
 
   return (
