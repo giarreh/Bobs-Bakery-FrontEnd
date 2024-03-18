@@ -8,6 +8,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import PrivateRoutes from './components/PrivateRoutes';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
+import UserProfile from './components/profiles/UserProfile';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
               <Route element={<PrivateRoutes/>}>
                 <Route path="/" element={<PostList />} />
                 <Route path="/posts" element={<PostList />} />
+                <Route path='/me' element={<UserProfile />} />
               </Route>
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/login" element={<Login />} />
