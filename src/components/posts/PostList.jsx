@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../context/AppContext'
-import './PostList.css'
 import { UserContext } from '../../context/UserContext'
 import PostListItem from './PostListItem';
 

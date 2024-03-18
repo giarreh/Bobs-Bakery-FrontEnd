@@ -4,7 +4,7 @@ import Sidebar from './components/Sidebar';
 import Header from './components/header';
 import UserContextProvider from './context/UserContext';
 import PostList from './components/posts/PostList';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import {HashRouter as Router, Routes, Route} from 'react-router-dom';
 import PrivateRoutes from './components/PrivateRoutes';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
