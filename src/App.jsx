@@ -5,6 +5,7 @@ import Header from './components/header';
 import UserContextProvider from './context/UserContext';
 import PostList from './components/posts/PostList';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import PrivateRoutes from './components/PrivateRoutes';
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
             <Sidebar />
             <main className="main">
               <Routes>
-                <Route path="/" element={<PostList />} />
+                <Route path="/" element={<PrivateRoutes />} />
                 <Route path="/posts" element={<PostList />} />
               </Routes>
             </main>
