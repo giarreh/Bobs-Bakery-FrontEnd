@@ -9,6 +9,7 @@ export default function PostListItem({ post }) {
   return (
     <div className='postContainer' onClick={() => navigate(`/posts/${post.id}`)} >
       <h3 className='postTitle'>{post.title}</h3>
+      <p>{post.description}</p>
     </div>
   );
 }

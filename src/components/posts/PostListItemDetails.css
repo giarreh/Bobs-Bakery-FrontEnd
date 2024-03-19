@@ -1,0 +1,24 @@
+.postItemContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.ingredients {
+  flex: 1;
+  border-right: 1px solid black;
+}
+
+.instructions {
+  flex: 3;
+  padding-left: 2rem
+}
+
+.postHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
