@@ -12,16 +12,15 @@ export default function Signup() {
 
   const [form, setForm] = useState({
     username: '',
+    email: '',
     password: '',
     firstName: '',
     lastName: '',
-    email: '',
     favoriteColor: '',
+    role: ['user']
   });
 
-  const [color, setColor] = useState('#ffffff'); // State for the selected color
   const handleColorChange = (newColor) => {
-    setColor(newColor.hex);
     setForm({ ...form, favoriteColor: newColor.hex }); // Update form state with new color
   };
   const [showColorPicker, setShowColorPicker] = useState(false); // State for showing/hiding the color picker
@@ -29,11 +28,28 @@ export default function Signup() {
     setShowColorPicker(!showColorPicker);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setUser(form);
-    console.log('User signed up: ', form);
-    navigate('/posts');
+  
+    try {
+      const response = await fetch('http://localhost:4000/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+      });
+  
+      if (!response.ok) {
+        return console.error('Unable to sign up:', response);
+      }
+  
+      const data = await response.json();
+      setUser(data);
+      navigate('/login');
+    } catch (error) {
+      console.error('Unable to sign up:', error);
+    }
   };
 
   return (
@@ -70,19 +86,17 @@ export default function Signup() {
           value={form.email}
           onChange={(e) => setForm({ ...form, email: e.target.value })}
         />
-        <div>
-          <label htmlFor="color">Favorite Color</label>
+        {showColorPicker && (
+          <>
+          <SketchPicker color={form.color} onChange={handleColorChange} />
           <input
-            type="text"
-            id="color"
-            value={color}
-            onChange={(e) => setForm({ ...form, favoriteColor: e.target.value })}
-          />
-        </div>
-        <button onClick={toggleColorPicker}>Pick a color</button>
-        {showColorPicker && ( // Show color picker if showColorPicker is true
-          <SketchPicker color={color} onChange={handleColorChange} />
+          type="text"
+          id="favoriteColor"
+          value={form.favoriteColor}
+          onChange={(e) => setForm({ ...form, favoriteColor: e.target.value })}/>
+          </> // Show color picker if showColorPicker is true
         )}
+        <button onClick={toggleColorPicker}>{!showColorPicker ? 'Select a color' : 'Confirm'}</button>
         <button onClick={handleSubmit}>Sign up</button>
         <button onClick={() => {setUser(true); navigate('/posts')}}>TEST USER</button>
       </form>

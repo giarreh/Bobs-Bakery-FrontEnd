@@ -1,17 +1,46 @@
 // Login.js
 
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import './Login.css';
+import { UserContext } from '../../context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
 
-  const handleSubmit = (e) => {
-    // check if user exists in database
-    // if user exists, navigate to /posts
-    // check if password is correct
-    // check if username is correct
+  const { user, setUser, setAuthToken } = useContext(UserContext);
+  const [userForm, setUserForm] = useState({
+    username: '',
+    password: ''
+  });
+
+  const navigate = useNavigate();
+
+
+  const handleSubmit = async (e) => {
+
     e.preventDefault();
-    console.log('User logged in');
+
+    try {
+      const response = await fetch('http://localhost:4000/auth/signin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userForm),
+      });
+
+      if (!response.ok) {
+        return console.error('Unable to login:', response);
+      }
+
+      const data = await response.json();
+      setUser(data);
+      setAuthToken(data.token);
+      console.log("USER: ", user)
+      navigate('/');
+    } catch (error) {
+      console.error('Unable to login:', error);
+    }
   }
 
   return (
@@ -19,12 +48,19 @@ export default function Login() {
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Email</label>
-          <input type="email" required />
+          <input 
+          type="text" required 
+          value={userForm.username}
+          placeholder='username'
+          onChange={(e) => setUserForm({...userForm, username: e.target.value})}
+          />
         </div>
         <div>
-          <label>Password</label>
-          <input type="password" required />
+          <input type="password" required
+          value={userForm.password}
+          placeholder='Password'
+          onChange={(e) => setUserForm({...userForm, password: e.target.value})}
+          />
         </div>
         <button type="submit">Login</button>
       </form>

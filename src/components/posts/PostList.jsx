@@ -1,6 +1,5 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../../context/AppContext'
-import { UserContext } from '../../context/UserContext'
+import { useContext } from 'react';
+import { AppContext } from '../../context/AppContext';
 import PostListItem from './PostListItem';
 
 export default function PostList() {
@@ -15,5 +14,5 @@ export default function PostList() {
         <PostListItem key={post.id} post={post} />
       ))}
     </div>
-  )
+  );
 }
