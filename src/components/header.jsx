@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import logo from '../assets/Bobs_Bakery.svg'
 
 function Header() {
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser, clearAuthToken } = useContext(UserContext);
   const navigate = useNavigate();
 
   return (
@@ -19,7 +19,7 @@ function Header() {
           <div className='headerLoggedIn'>
             <p style={{ cursor: 'pointer' }} onClick={() => navigate('/me')} >MY PROFILE</p>
             <p>|</p>
-            <p style={{ cursor: 'pointer' }} onClick={() => setUser(null)}>LOGOUT</p>
+            <p style={{ cursor: 'pointer' }} onClick={() => {setUser(null); clearAuthToken(); }}>LOGOUT</p>
           </div>
         ) : (
           <div>

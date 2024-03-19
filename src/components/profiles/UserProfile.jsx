@@ -13,6 +13,7 @@ export default function UserProfile() {
           <h1>Profile</h1>
           <p>Name: {user.firstName} {user.lastName}</p>
           <p>Email: {user.email}</p>
+          <button onClick={() => console.log(user)}>Get user</button>
         </div>
       :
         <p>Loading..</p>

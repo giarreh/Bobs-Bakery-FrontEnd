@@ -1,25 +1,21 @@
 // Login.js
 
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Login.css';
 import { UserContext } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 
-export default function Login() {
+export default function Login() {  
+  const navigate = useNavigate();
 
-  const { user, setUser, setAuthToken } = useContext(UserContext);
+  const { user, setUser, getAuthToken, setAuthToken, getUserFromToken } = useContext(UserContext);
   const [userForm, setUserForm] = useState({
     username: '',
     password: ''
   });
 
-  const navigate = useNavigate();
-
-
   const handleSubmit = async (e) => {
-
     e.preventDefault();
-
     try {
       const response = await fetch('http://localhost:4000/auth/signin', {
         method: 'POST',
@@ -34,9 +30,10 @@ export default function Login() {
       }
 
       const data = await response.json();
-      setUser(data);
-      setAuthToken(data.token);
-      console.log("USER: ", user)
+      console.log(data);
+      await setUser(data);
+      await setAuthToken(data.token);
+      localStorage.setItem('user', JSON.stringify(data));
       navigate('/');
     } catch (error) {
       console.error('Unable to login:', error);
@@ -66,6 +63,9 @@ export default function Login() {
       </form>
       <div>
         <p>Don't have an account? <a href="/#/signup">Sign up</a></p>
+      </div>
+      <div>
+        <button onClick={() => getUserFromToken(getAuthToken())}>token</button>
       </div>
     </div>
   )

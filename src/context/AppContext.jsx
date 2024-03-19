@@ -9,6 +9,7 @@ export default function AppContextProvider({ children }) {
 
   const {user} = useContext(UserContext);
 
+
   useEffect(() => {
     if(user){
       const fetchData = async () => {

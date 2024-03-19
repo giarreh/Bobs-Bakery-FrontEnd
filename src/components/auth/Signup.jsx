@@ -41,11 +41,9 @@ export default function Signup() {
       });
   
       if (!response.ok) {
-        return console.error('Unable to sign up:', response);
+        throw new Error('Unable to sign up');
       }
-  
-      const data = await response.json();
-      setUser(data);
+      alert('User created successfully, redirecting to sign in page..');
       navigate('/login');
     } catch (error) {
       console.error('Unable to sign up:', error);

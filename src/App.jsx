@@ -12,6 +12,7 @@ import UserProfile from './components/profiles/UserProfile';
 
 
 function App() {
+  
   return (
     <Router>
       <UserContextProvider>
