@@ -29,3 +29,13 @@
 .postBody {
   font-size: 16px;
 }
+
+.postStarReview {
+  display: flex;
+  align-items: center;
+}
+
+.postStarReview p {
+  font-size: 15px;
+  margin-left: 5px;
+}

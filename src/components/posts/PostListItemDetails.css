@@ -1,8 +1,14 @@
+.container {
+  background-color: white;
+  padding: 2rem;
+  border: 2px solid black;
+  border-radius: 15px;
+}
+
 .postItemContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
 }
 
 .ingredients {
@@ -25,13 +31,16 @@
 
 .reviews h2 {
   text-align: center;
+  color: white;
 }
 
 .review {
   display: flex;
   flex-direction: column;
   border: 1px solid black;
+  border-radius: 5px;
   margin: 2rem;
+  background-color: antiquewhite;
 }
 .reviewHeader {
   display: flex;

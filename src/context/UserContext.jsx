@@ -27,10 +27,6 @@ const getUserFromToken = (token) => {
 const clearAuthToken = () => {
   return localStorage.removeItem('authToken');
 };
-  
-
-
-
   return (
     <UserContext.Provider value={{ user, setUser, setAuthToken, getAuthToken, clearAuthToken,getUserFromToken }}>
       {loading ? <p>Loading...</p> : children}

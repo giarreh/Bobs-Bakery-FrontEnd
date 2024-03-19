@@ -14,7 +14,7 @@ export default function PostList() {
   return (
     <div>
       <button onClick={() => console.log(getUserFromToken(getAuthToken()))}>Get token</button>
-      <h1>Posts</h1>
+      <h1 style={{color: 'white'}} >Posts</h1>
       {limitedPosts.map((post) => (
         <PostListItem key={post.id} post={post} />
       ))}

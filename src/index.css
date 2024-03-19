@@ -11,9 +11,13 @@
   src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
 }
 
+
 /* Apply the font family to elements */
 body {
   font-family: var(--font-family);
   margin: 0; /* Remove default margin */
-  background-color: #E3E4DB;
+  background: linear-gradient(to bottom right, #64b3f4, #c2e59c);
+  /* Fallback color */
+  background-color: #64b3f4; 
+  /* Additional styles */
 }
