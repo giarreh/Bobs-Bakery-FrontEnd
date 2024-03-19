@@ -11,7 +11,6 @@ export default function PostList() {
   if (!getAuthToken()) {
     return <h1>Sign in to see posts</h1>;
   }
-
   return (
     <div>
       <button onClick={() => console.log(getUserFromToken(getAuthToken()))}>Get token</button>

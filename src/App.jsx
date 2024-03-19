@@ -9,6 +9,7 @@ import PrivateRoutes from './components/PrivateRoutes';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import UserProfile from './components/profiles/UserProfile';
+import PostListItemDetails from './components/posts/PostListItemDetails';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/" element={<PostList />} />
                 <Route path="/posts" element={<PostList />} />
                 <Route path='/me' element={<UserProfile />} />
+                <Route path='posts/:id' element={<PostListItemDetails />} />
               </Route>
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/login" element={<Login />} />

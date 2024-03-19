@@ -33,7 +33,6 @@ export default function Login() {
       console.log(data);
       await setUser(data);
       await setAuthToken(data.token);
-      localStorage.setItem('user', JSON.stringify(data));
       navigate('/');
     } catch (error) {
       console.error('Unable to login:', error);
