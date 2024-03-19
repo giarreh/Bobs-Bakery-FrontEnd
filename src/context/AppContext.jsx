@@ -14,14 +14,28 @@ export default function AppContextProvider({ children }) {
     if(user){
       const fetchData = async () => {
         try {
-          const postsResponse = await fetch('https://jsonplaceholder.typicode.com/posts');
-          const usersResponse = await fetch('https://jsonplaceholder.typicode.com/users');
+          const postsResponse = await fetch(
+            'http://localhost:4000/posts',
+            {
+              headers: {
+                Authorization: `Bearer ${user.token}`,
+              },
+            }
+          );
+          const usersResponse = await fetch(
+            'http://localhost:4000/posts',
+            {
+              headers: {
+                Authorization: `Bearer ${user.token}`,
+              },
+            }
+          );
   
           const postsData = await postsResponse.json();
           const usersData = await usersResponse.json();
   
-          setPosts(postsData);
-          setUsers(usersData);
+          setPosts(postsData.data);
+          setUsers(usersData.data);
   
           console.log("POSTS ARE SET: ", postsData);
           console.log("USERS ARE SET: ", usersData);

@@ -12,6 +12,7 @@ export default function PrivateRoutes() {
   useEffect(() => {
     if (token) {
       const decodedToken = jwtDecode(token);
+      console.log("TOKEN: ", token)
       console.log("DECODED TOKEN: ", decodedToken);
       setUser(decodedToken);
     }
