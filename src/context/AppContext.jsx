@@ -19,6 +19,7 @@ export default function AppContextProvider({ children }) {
             {
               headers: {
                 Authorization: `Bearer ${user.token}`,
+                'Access-Control-Allow-Origin': '*',
               },
             }
           );
@@ -27,6 +28,7 @@ export default function AppContextProvider({ children }) {
             {
               headers: {
                 Authorization: `Bearer ${user.token}`,
+                'Access-Control-Allow-Origin': '*',
               },
             }
           );
