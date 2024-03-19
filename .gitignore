@@ -23,4 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 
-cloudinary.config
+cloudinaryConfig.jsx

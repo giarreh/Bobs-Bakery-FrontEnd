@@ -8,6 +8,7 @@
   background-color: #F1F2EE;
   animation: fadeInUp 1.5s ease forwards; /* Apply animation */
   cursor: pointer;
+  margin-right: 10%
 }
 
 @keyframes fadeInUp {
