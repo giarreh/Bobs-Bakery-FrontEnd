@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
 }
 
 .ingredients {
@@ -22,3 +23,26 @@
   border-bottom: 1px solid black;
 }
 
+.reviews h2 {
+  text-align: center;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  margin: 2rem;
+}
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+.reviewHeader p {
+  padding: 5px; 
+}
+
+.reviewHeader2 p {
+  padding-left: 5px;
+}

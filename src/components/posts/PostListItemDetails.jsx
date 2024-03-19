@@ -43,6 +43,7 @@ export default function PostListItemDetails() {
         <div className='postHeader'>
           <h1 className='postTitle'>{post?.title}</h1>
           <p>{post?.description}</p>
+          
         </div>
           <div className='postItemContainer'>
             <div className='ingredients'>
@@ -65,8 +66,14 @@ export default function PostListItemDetails() {
             <h2>Reviews</h2>
             {reviews.map((review, index) => (
               <div key={index} className='review'>
-                <h3>{review.message}</h3>
-                <p>Rating: {review.rating}</p>
+                <div className='reviewHeader'>
+                  <p>{review.user.firstName} {review.user.lastName}</p>
+                  <p>{review.createdAt}</p>
+                </div>
+                <div className='reviewHeader2'>
+                  <p>{review.message}</p>
+                  <p>Rating: {review.rating}</p>
+                </div>
               </div>
             ))}
 

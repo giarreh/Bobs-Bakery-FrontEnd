@@ -23,7 +23,7 @@ export default function AppContextProvider({ children }) {
             }
           );
           const usersResponse = await fetch(
-            'http://localhost:4000/posts',
+            'http://localhost:4000/users',
             {
               headers: {
                 Authorization: `Bearer ${user.token}`,
