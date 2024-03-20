@@ -10,7 +10,18 @@
   color: #fff;
   padding: 20px;
   margin-top: 2px;
-  border-right: 1px solid linear-gradient(to bottom right, #ff6b6b, #556270);;
+  border-right: 1px solid black;
+}
+
+.sidebarButton {
+  background-color: #ff6b6b;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 /* Header styles */
