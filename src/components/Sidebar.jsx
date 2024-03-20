@@ -20,7 +20,7 @@ function Sidebar() {
       <div className='sidebarButton' onClick={randomPost} >
         <h3>Feeling Brave?</h3>
       </div>
-      <div className='sidebarButton' >
+      <div className='sidebarButton' onClick={() => navigate("/create")} >
         <h3>+</h3>
       </div>
     </div>

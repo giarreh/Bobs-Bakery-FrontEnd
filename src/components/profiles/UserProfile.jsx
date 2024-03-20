@@ -4,7 +4,7 @@ import ProfileInitials from '../utils/ProfileInitials';
 
 export default function UserProfile() {
 
-  const { user } = useContext(UserContext);
+  const { user, getAuthToken } = useContext(UserContext);
 
   return (
     <div>
@@ -13,7 +13,7 @@ export default function UserProfile() {
           <h1>Profile</h1>
           <p>Name: {user.firstname} {user.lastname}</p>
           <p>Email: {user.email}</p>
-          <button onClick={() => console.log(user)}>Get user</button>
+          <button onClick={() => console.log(getAuthToken())}>Get user</button>
         </div>
       :
         <p>Loading..</p>

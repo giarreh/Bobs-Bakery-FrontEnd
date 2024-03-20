@@ -1,5 +1,5 @@
 .container {
-  background-color: white;
+  background-color: whitesmoke;
   padding: 2rem;
   border: 2px solid black;
   border-radius: 15px;
@@ -11,12 +11,12 @@
   justify-content: space-between;
 }
 
-.ingredients {
+.ingredients2 {
   flex: 1;
   border-right: 1px solid black;
 }
 
-.instructions {
+.instructions2 {
   flex: 3;
   padding-left: 2rem
 }
@@ -54,4 +54,8 @@
 
 .reviewHeader2 p {
   padding-left: 5px;
+}
+.reviewStars {
+  display: flex;
+  align-items: center;
 }

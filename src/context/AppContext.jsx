@@ -51,7 +51,7 @@ export default function AppContextProvider({ children }) {
   );
 
   return (
-    <AppContext.Provider value={{ posts, users }}>
+    <AppContext.Provider value={{ posts, users, setPosts }}>
       {children}
     </AppContext.Provider>
   );

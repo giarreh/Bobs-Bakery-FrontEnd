@@ -1,0 +1,180 @@
+.createPostContainer {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  color:black;
+  animation: fadeInUp 0.5s ease forwards; /* Apply animation */
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.postForm {
+  margin-top: 20px;
+}
+
+.postForm form {
+  display: flex;
+  flex-direction: column;
+}
+
+.postForm div {
+  margin-bottom: 15px;
+}
+
+.postForm label {
+  font-weight: bold;
+}
+
+.postForm input[type='text'],
+.postForm textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+  margin-right: 5px;
+  resize: none;
+}
+
+.ingredients {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+  border: none;
+}
+
+.ingredient {
+  display: flex;
+  flex-basis: calc(90% / 3); /* Set each ingredient container to take up 1/3 of the available width */
+  max-width: calc(90% / 3);
+  margin-bottom: 10px;
+  margin-right: 10px;
+  border: none;
+}
+
+.instructions {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+  padding: 0;
+  border: none;
+}
+
+.instruction {
+  display: flex;
+  flex-basis: calc(90% / 2); /* Set each ingredient container to take up 1/3 of the available width */
+  max-width: calc(90% / 2);
+  margin-bottom: 10px;
+  border: none;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+  padding: 0;
+  border: none;
+}
+
+.tag {
+  display: flex;
+  flex-basis: calc(90% / 2); /* Set each ingredient container to take up 1/3 of the available width */
+  max-width: calc(90% / 2);
+  margin-bottom: 10px;
+  border: none;
+}
+
+.description {
+  min-height: 75px;
+}
+
+.postForm button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.postForm button:hover {
+  background-color: #0056b3;
+}
+
+.buttonIngredients {
+  margin-right: 10px
+}
+
+.OtherContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 0;
+  text-align: center;
+}
+
+.OtherItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-basis: calc(90% / 2);
+  max-width: calc(90% / 2);
+  margin-bottom: 10px;
+  border: none;
+}
+.difficulty {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-basis: calc(90% / 2);
+  max-width: calc(90% / 2);
+  margin-bottom: 10px;
+  border: none;
+}
+
+.difficultyButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.difficultyButtons .selected {
+  background-color: green;
+  color: #fff;
+}
+.difficultyButtons .selected:hover {
+  background-color: rgb(44, 183, 44);
+  color: #fff;
+}
+
+
+.difficultyButtons button {
+  padding: 5px;
+  margin: 5px;
+}
+
+
+.submitButton {
+  background-color: #92d45c;
+  color: #fff;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100px;
+
+}

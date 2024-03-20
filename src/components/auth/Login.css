@@ -6,7 +6,7 @@
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: #e1f6ff;
+  background-color: #f9f9f9;
   animation: fadeInUp 1.5s ease forwards; /* Apply animation */
 }
 
@@ -54,4 +54,19 @@
 
 .login form button:hover {
   background-color: #0056b3;
+}
+
+.noAccount {
+  display: flex;
+  align-items: center;
+  }
+
+.noAccount p {
+  margin-right: 15px;
+}
+
+.noAccount p:nth-child(2) {
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
 }

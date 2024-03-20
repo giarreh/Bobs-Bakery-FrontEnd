@@ -9,7 +9,7 @@ import { SketchPicker } from 'react-color';
 export default function Signup() {
   const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
-
+  const [color, setColor] = useState('#000000'); // State for color picker
   const [form, setForm] = useState({
     username: '',
     email: '',
@@ -22,6 +22,7 @@ export default function Signup() {
 
   const handleColorChange = (newColor) => {
     setForm({ ...form, favoriteColor: newColor.hex }); // Update form state with new color
+    setColor(newColor.hex); // Update color state with new color
   };
   const [showColorPicker, setShowColorPicker] = useState(false); // State for showing/hiding the color picker
   const toggleColorPicker = () => {
@@ -30,7 +31,16 @@ export default function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+    
+    // check if fields are empty
+    if (form.username === '' || form.password === '' || form.firstName === '' || form.lastName === '' || form.email === '') {
+      alert('Please fill in all fields');
+      return;
+    }
+
+    
+
+
     try {
       const response = await fetch('http://localhost:4000/auth/signup', {
         method: 'POST',
@@ -43,6 +53,7 @@ export default function Signup() {
       if (!response.ok) {
         throw new Error('Unable to sign up');
       }
+      console.log("USER: ",form)
       alert('User created successfully, redirecting to sign in page..');
       navigate('/login');
     } catch (error) {
@@ -53,6 +64,7 @@ export default function Signup() {
   return (
     <div className="signup-container">
       <h1>Register a new user</h1>
+      <div>
       <form className="signup-form">
         <input
           type="text"
@@ -86,18 +98,20 @@ export default function Signup() {
         />
         {showColorPicker && (
           <>
-          <SketchPicker color={form.color} onChange={handleColorChange} />
+          <SketchPicker color={color} onChange={handleColorChange} />
           <input
           type="text"
           id="favoriteColor"
-          value={form.favoriteColor}
-          onChange={(e) => setForm({ ...form, favoriteColor: e.target.value })}/>
+          value={color}
+          onChange={(e) => {setForm({ ...form, favoriteColor: e.target.value });}}/>
           </> // Show color picker if showColorPicker is true
         )}
-        <button onClick={toggleColorPicker}>{!showColorPicker ? 'Select a color' : 'Confirm'}</button>
-        <button onClick={handleSubmit}>Sign up</button>
-        <button onClick={() => {setUser(true); navigate('/posts')}}>TEST USER</button>
+        <div className='buttonsSignup'>
+          <button type='button' onClick={toggleColorPicker}>{!showColorPicker ? 'Select a color' : 'Confirm'}</button>
+          <button onClick={handleSubmit}>Sign up</button>
+        </div>
       </form>
+      </div>
     </div>
   );
 }

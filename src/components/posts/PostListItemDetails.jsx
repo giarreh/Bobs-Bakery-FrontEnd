@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { AppContext } from '../../context/AppContext';
 import './PostListItemDetails.css';
+import { Rating } from 'react-simple-star-rating'
 
 export default function PostListItemDetails() {
 
@@ -46,14 +47,14 @@ export default function PostListItemDetails() {
           
         </div>
           <div className='postItemContainer'>
-            <div className='ingredients'>
+            <div className='ingredients2'>
               {post?.ingredients.map((ingredient, index) => (
                 <div key={index}>
-                  <p>g {ingredient}</p>
+                  <p>{ingredient}</p>
                 </div>
               ))}
             </div>
-            <div className='instructions'>
+            <div className='instructions2'>
               {post?.instructions.map((instruction, index) => (
                 <div key={index}>
                   <h3>Step {index + 1}</h3>
@@ -63,7 +64,7 @@ export default function PostListItemDetails() {
             </div>
           </div>
           <div className='reviews'>
-            <h2>Reviews</h2>
+            <h2 style={{color: 'black'}}>Reviews</h2>
             {reviews.map((review, index) => (
               <div key={index} className='review'>
                 <div className='reviewHeader'>
@@ -72,7 +73,18 @@ export default function PostListItemDetails() {
                 </div>
                 <div className='reviewHeader2'>
                   <p>{review.message}</p>
-                  <p>Rating: {review.rating}</p>
+                  <div className='reviewStars'>
+                    <div>
+                      <p>Rating: </p>
+                    </div>
+                    <div>          
+                      <Rating initialValue={review.rating} 
+                      readonly={true}
+                      allowFraction={true}
+                      size={20}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}

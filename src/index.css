@@ -1,23 +1,12 @@
 :root {
-  /* Define the font family */
-  --font-family: 'Roboto', sans-serif;
-}
-
-/* Import Roboto font */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
 }
 
 
-/* Apply the font family to elements */
 body {
-  font-family: var(--font-family);
   margin: 0; /* Remove default margin */
-  background: linear-gradient(to bottom right, #64b3f4, #c2e59c);
+  background: linear-gradient(to top, #ebede2, #e4e1ec);
   /* Fallback color */
-  background-color: #64b3f4; 
+  background-color: linear-gradient(to top, #ebede2, #e4e1ec);
   /* Additional styles */
+  font-family: 'Roboto', sans-serif;
 }
