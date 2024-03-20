@@ -2,11 +2,14 @@ import React, { useContext, useState } from 'react';
 import './CreatePost.css';
 import { UserContext } from '../../../context/UserContext';
 import { AppContext } from '../../../context/AppContext';
+import { useNavigate } from 'react-router-dom';
 
 export default function CreatePost() {
   const { user, getAuthToken } = useContext(UserContext);
 
   const { posts, setPosts} = useContext(AppContext)
+
+  const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
     title: '',
@@ -166,6 +169,7 @@ export default function CreatePost() {
       console.log('Success:', data);
       setPosts([formData, ...posts]);
       alert('Post created successfully');
+      navigate(`/posts/${data.data.id}`)
     })
     console.log(formData);
       
@@ -173,6 +177,7 @@ export default function CreatePost() {
       console.error('Error:', error);
       alert('Error creating post');
     }
+
   };
 
   return (
