@@ -4,9 +4,7 @@
 
 body {
   margin: 0; /* Remove default margin */
-  background: linear-gradient(to top, #ebede2, #e4e1ec);
-  /* Fallback color */
-  background-color: linear-gradient(to top, #ebede2, #e4e1ec);
+  background: #484848;
   /* Additional styles */
   font-family: 'Roboto', sans-serif;
 }

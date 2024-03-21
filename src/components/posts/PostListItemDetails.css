@@ -63,13 +63,19 @@
 .createReviewContainer {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin: 2rem;
+}
+
+.createReviewContainer textarea {
+  min-width: 150px;
 }
 
 .createReviewTextAndStar {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
+  margin: 5px;
 }
 
 .alreadyVoted {

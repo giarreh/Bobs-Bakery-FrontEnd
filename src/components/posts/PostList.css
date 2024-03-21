@@ -1,6 +1,7 @@
 /* postlist.css */
 
 .postContainer {
+  display:flex;
   margin-bottom: 20px;
   padding: 15px;
   border: 1px solid #ccc;
@@ -9,6 +10,14 @@
   animation: fadeInUp 1.0s ease forwards; /* Apply animation */
   cursor: pointer;
   margin-right: 10%
+}
+.postImage {
+  flex: 1;
+  max-width: 15rem;
+  padding-right: 1rem;
+}
+.postContents {
+  flex: 2;
 }
 
 @keyframes fadeInUp {

@@ -23,16 +23,21 @@ export default function PostListItem({ post }) {
 
   return (
     <div className='postContainer' onClick={() => navigate(`/posts/${post?.id}`)} >
-    <h3 className='postTitle'>{post?.title}</h3>
-    <div className='postStarReview'>
-      <Rating initialValue={calculateAverageRating()} 
-      readonly={true}
-      allowFraction={true}
-      size={25}
-      />
-      <p>({post?.reviews?.length} ratings)</p>
-    </div>
-    <p>{post?.description}</p>
+      <div>
+        <img className='postImage' src={post?.imageUrl} alt="No image found" />
+      </div>
+      <div className='postContents'>
+        <h3 className='postTitle'>{post?.title}</h3>
+        <div className='postStarReview'>
+          <Rating initialValue={calculateAverageRating()} 
+          readonly={true}
+          allowFraction={true}
+          size={25}
+          />
+          <p>({post?.reviews?.length} ratings)</p>
+        </div>
+        <p>{post?.description}</p>
+      </div>
   </div>
   );
 }
