@@ -6,7 +6,6 @@ export const AppContext = createContext();
 export default function AppContextProvider({ children }) {
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
-
   const {user} = useContext(UserContext);
 
 
@@ -43,8 +42,8 @@ export default function AppContextProvider({ children }) {
           throw new Error('Error fetching data');
         }
       };
-  
       fetchData();
+
       console.log("USER UPDATED, REFETCHING DATA...")
     }
   }, [user]

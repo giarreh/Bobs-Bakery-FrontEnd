@@ -3,15 +3,21 @@ import { useParams } from 'react-router'
 import { AppContext } from '../../context/AppContext';
 import './PostListItemDetails.css';
 import { Rating } from 'react-simple-star-rating'
+import { UserContext } from '../../context/UserContext';
 
 export default function PostListItemDetails() {
 
   const [post, setPost] = useState({});
   const [reviews, setReviews] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [reviewForm, setReviewForm] = useState({
+    message: '',
+    rating: 0,
+  });
 
+  const [loading, setLoading] = useState(true);
   const { id } = useParams();
-  const { posts, users } = useContext(AppContext);
+  const { posts } = useContext(AppContext);
+  const { getAuthToken, user } = useContext(UserContext);
 
 
   useEffect(() => {
@@ -32,8 +38,44 @@ export default function PostListItemDetails() {
       console.error('Error fetching data:', error);
       setLoading(false);
     });
-  }, [id]);
+  }, [id, posts]);
 
+  const handleMessageChange = (e) => {
+    setReviewForm({
+      ...reviewForm,
+      message: e.target.value,
+    });
+  };
+
+  const handleSubmit = async () => {
+    try {
+
+
+
+      const response = await fetch(`http://localhost:4000/posts/${id}/reviews`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${getAuthToken()}`,
+        },
+        body: JSON.stringify(reviewForm),
+      });
+
+      if (!response.ok) {
+        return console.error('Unable to add review:', response);
+      }
+
+      const data = await response.json();
+      console.log(data);
+      setReviews([...reviews, data.data]);
+      setReviewForm({
+        message: '',
+        rating: 0,
+      });
+    } catch (error) {
+      console.error('Unable to add review:', error);
+    }
+  }
 
   return (
     <div className='container'>
@@ -88,7 +130,19 @@ export default function PostListItemDetails() {
                 </div>
               </div>
             ))}
-
+            {/* Add a review form */}
+            <div className='createReviewContainer'>
+              <div>
+                <textarea type='text' placeholder='Add a review' value={reviewForm.message} onChange={handleMessageChange} className='reviewText' />
+                <Rating initialValue={reviewForm.rating} 
+                  onClick={(rate) => setReviewForm({...reviewForm, rating: rate})}
+                  size={20}
+                  />
+              </div>
+              <div className='sidebarButton' onClick={handleSubmit} >
+                <p>Add a review</p>
+              </div>
+            </div>
           </div>
         </>
       )}

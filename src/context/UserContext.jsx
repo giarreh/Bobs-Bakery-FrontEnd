@@ -16,8 +16,8 @@ const getAuthToken = () => {
   return localStorage.getItem('authToken');
 };
 
-const getUserFromToken = (token) => {
-  const decodedToken = jwtDecode(token);
+const getUserFromToken = () => {
+  const decodedToken = jwtDecode(getAuthToken());
   console.log("DECODED TOKEN: ", decodedToken);
   return decodedToken;
 };
