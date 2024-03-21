@@ -179,8 +179,9 @@ export default function CreatePost() {
 
   return (
     <div className='createPostContainer'>
-      <h1>Create a new post</h1>
       <div className='postForm'>
+      <h1>Create a new post</h1>
+
         <form>
           <div>
             <label htmlFor='title'>Title</label>

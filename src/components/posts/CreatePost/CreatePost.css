@@ -1,8 +1,11 @@
 .createPostContainer {
-  max-width: 600px;
+  display: flex;
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  color:black;
+  color:white;
+  border: 1px solid #ccc;
+  border-radius: 25px;
   animation: fadeInUp 0.5s ease forwards; /* Apply animation */
 }
 

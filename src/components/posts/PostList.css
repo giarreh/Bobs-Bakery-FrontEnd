@@ -7,17 +7,9 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: whitesmoke;
-  animation: fadeInUp 1.0s ease forwards; /* Apply animation */
   cursor: pointer;
-  margin-right: 10%
-}
-.postImage {
-  flex: 1;
-  max-width: 15rem;
-  padding-right: 1rem;
-}
-.postContents {
-  flex: 2;
+  margin-right: 10%;
+  animation: fadeInUp 1.0s ease forwards; /* Apply animation */
 }
 
 @keyframes fadeInUp {
@@ -29,6 +21,15 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.postImage {
+  flex: 1;
+  max-width: 15rem;
+  padding-right: 1rem;
+}
+.postContents {
+  flex: 2;
 }
 
 .postTitle {

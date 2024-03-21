@@ -5,6 +5,9 @@ import { AppContext } from '../../context/AppContext';
 import './PostListItemDetails.css';
 import { Rating } from 'react-simple-star-rating'
 import { UserContext } from '../../context/UserContext';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import RestaurantIcon from '@mui/icons-material/Restaurant';
+import SpeedIcon from '@mui/icons-material/Speed';
 
 export default function PostListItemDetails() {
 
@@ -136,8 +139,29 @@ export default function PostListItemDetails() {
       ) : (
         <>
         <div className='postHeader'>
-          <h1 className='postTitle'>{post?.title}</h1>
-          <p>{post?.description}</p>
+          <div className='postImageContainer'>
+            <img className='postImage' src={post?.imageUrl} alt="No image found" />
+          </div>         
+          <div className='postContentContainer'>
+            <div>
+              <h1 className='postTitle'>{post?.title}</h1>
+              <p>{post?.description}</p>
+            </div>
+            <div className='postTagsContainer'>
+              <div className='postTimeContainer'>
+                <AccessTimeIcon style={{color: 'green', fontSize: '20px', marginRight: '5px'}}/>
+                <p>Time: {post?.bakingTime}</p>
+              </div>
+              <div className='postTimeContainer'>
+              <SpeedIcon style={{color: 'green', fontSize: '20px', marginRight: '5px'}}/>
+                <p>Difficulty: {post?.difficulty}</p>
+              </div>
+              <div className='postTimeContainer'>
+              <RestaurantIcon style={{color: 'green', fontSize: '20px', marginRight: '5px'}}/>
+                <p>Calories: {post?.calories}</p>
+              </div>
+            </div>
+          </div>
           
         </div>
           <div className='postItemContainer'>

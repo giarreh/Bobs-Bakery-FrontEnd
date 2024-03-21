@@ -3,8 +3,19 @@
   padding: 2rem;
   border: 2px solid black;
   border-radius: 15px;
+  animation: fadeInUp 1.0s ease forwards; /* Apply animation */
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .postItemContainer {
   display: flex;
   flex-direction: row;
@@ -23,10 +34,36 @@
 
 .postHeader {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid black;
+}
+.postImageContainer {
+  flex: 1;
+}
+.postContentContainer{
+  flex: 2;
+}
+.postTagsContainer {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+  align-items: center;
+  align-self: flex-end;
+}
+.postTagsContainer p {
+  margin-right: 1rem;
+}
+
+.postImage {
+  max-width: 14.7rem;
+  margin-bottom: 5px;
+}
+
+.postTimeContainer{
+  display: flex;
+  align-items: center;
 }
 
 .reviews h2 {
