@@ -244,7 +244,7 @@ export default function CreatePost() {
               <input id='category' name='category' value={formData.category} onChange={handleChange} className='category' />
             </div>
             <div className='OtherItem'>
-              <label htmlFor='bakingTime'>Baking Time</label>
+              <label htmlFor='bakingTime'>Baking Time (minutes)</label>
               <input id='bakingTime' name='bakingTime' value={formData.bakingTime} onChange={handleChange} className='bakingTime' />
             </div>
             <div className='OtherItem'>

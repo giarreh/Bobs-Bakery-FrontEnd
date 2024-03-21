@@ -7,11 +7,11 @@ export default function PostListItem({ post }) {
   const navigate = useNavigate();
 
   const calculateAverageRating = () => {
-    if (post.reviews && post.reviews.length > 0) {
+    if (post?.reviews && post?.reviews.length > 0) {
       // Calculate sum of ratings
-      const sum = post.reviews.reduce((acc, review) => acc + review.rating, 0);
+      const sum = post?.reviews.reduce((acc, review) => acc + review.rating, 0);
       // Calculate average rating
-      const average = sum / post.reviews.length;
+      const average = sum / post?.reviews.length;
       return average.toFixed(1); // Return average rating rounded to 1 decimal place
     } else {
       return 'No reviews yet';
@@ -19,17 +19,17 @@ export default function PostListItem({ post }) {
   };
 
   return (
-    <div className='postContainer' onClick={() => navigate(`/posts/${post.id}`)} >
-      <h3 className='postTitle'>{post.title}</h3>
-      <div className='postStarReview'>
-        <Rating initialValue={calculateAverageRating()} 
-        readonly={true}
-        allowFraction={true}
-        size={25}
-        />
-        <p>({post.reviews.length} ratings)</p>
-      </div>
-      <p>{post.description}</p>
+    <div className='postContainer' onClick={() => navigate(`/posts/${post?.id}`)} >
+    <h3 className='postTitle'>{post?.title}</h3>
+    <div className='postStarReview'>
+      <Rating initialValue={calculateAverageRating()} 
+      readonly={true}
+      allowFraction={true}
+      size={25}
+      />
+      <p>({post?.reviews?.length} ratings)</p>
     </div>
+    <p>{post?.description}</p>
+  </div>
   );
 }

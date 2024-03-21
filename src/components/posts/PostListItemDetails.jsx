@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router'
+import { useNavigate } from "react-router-dom";
 import { AppContext } from '../../context/AppContext';
 import './PostListItemDetails.css';
 import { Rating } from 'react-simple-star-rating'
@@ -17,9 +18,9 @@ export default function PostListItemDetails() {
 
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
-  const { posts } = useContext(AppContext);
+  const { posts, setPosts } = useContext(AppContext);
   const { getAuthToken, user } = useContext(UserContext);
-
+  const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
@@ -45,7 +46,7 @@ export default function PostListItemDetails() {
       console.error('Error fetching data:', error);
       setLoading(false);
     });
-  }, [id, posts,]);
+  }, [id, posts]);
 
   const handleMessageChange = (e) => {
     setReviewForm({
@@ -62,7 +63,6 @@ export default function PostListItemDetails() {
           Authorization: `Bearer ${getAuthToken()}`,
         },
       });
-
       if (!response.ok) {
         return console.error('Unable to delete review:', response);
       }
@@ -74,15 +74,21 @@ export default function PostListItemDetails() {
     }
   };
 
+  const handleDeletePost = (post) => async () => {
+    const response = await fetch(`http://localhost:4000/posts/${post.id}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${getAuthToken()}`,
+      },
+    }).then(() => {
+      console.log("DELETED POST: ", post)
+      // Remove the post from the list of posts
+      setPosts(posts.filter(p => p.id !== post.id));
+      setAllowedReview(true);
+    }).then(
+      () => navigate('/'));
+  };
 
-  const handleDebug = () => {
-    console.log("DEBUG: POST", post);
-    console.log("DEBUG: REVIEWS", reviews);
-    console.log("DEBUG: REVIEW FORM", reviewForm);
-    console.log("DEBUG: USER", user)
-    const userReview = reviews.find(review => review.user.id == user.id);
-    console.log("DEBUG: USER REVIEW", userReview)
-  }
 
   const handleSubmit = async () => {
 
@@ -185,7 +191,7 @@ export default function PostListItemDetails() {
             {/* Add a review form */}
             {allowedReview ? (
               <div className='createReviewContainer'>
-              <div>
+              <div className='createReviewTextAndStar'>
                 <textarea type='text' placeholder='Add a review' value={reviewForm.message} onChange={handleMessageChange} className='reviewText' />
                 <Rating initialValue={reviewForm.rating} 
                   onClick={(rate) => setReviewForm({...reviewForm, rating: rate})}
@@ -194,12 +200,6 @@ export default function PostListItemDetails() {
               </div>
               <div className='sidebarButton' onClick={handleSubmit} >
                 <p>Add a review</p>
-              </div>
-
-
-
-              <div className='sidebarButton' onClick={handleDebug} >
-                <p>DEBUG</p>
               </div>
             </div>
             ) : (
@@ -210,6 +210,12 @@ export default function PostListItemDetails() {
           </div>
         </>
       )}
+        {/*if post.user.id == user.id, add div with delete text */}
+        {post.user?.id == user.id && (
+          <div className='deletePost' onClick={handleDeletePost(post)}>
+            <p>Delete post</p>
+          </div>
+        )}
     </div>
   );
 }
