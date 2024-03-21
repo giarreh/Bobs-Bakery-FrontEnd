@@ -42,6 +42,7 @@ export default function Signup() {
 
 
     try {
+
       const response = await fetch('http://localhost:4000/auth/signup', {
         method: 'POST',
         headers: {
@@ -54,7 +55,7 @@ export default function Signup() {
         throw new Error('Unable to sign up');
       }
       console.log("USER: ",form)
-      alert('User created successfully, redirecting to sign in page..');
+      console.log("RESPONSE: ",response)
       navigate('/login');
     } catch (error) {
       console.error('Unable to sign up:', error);

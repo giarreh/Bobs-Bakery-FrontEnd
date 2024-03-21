@@ -167,7 +167,7 @@ export default function CreatePost() {
     .then(response => response.json())
     .then(data => {
       console.log('Success:', data);
-      setPosts([...posts, formData]);
+      setPosts([formData, ...posts]);
       navigate(`/posts/${data.data.id}`)
     })      
     } catch (error) {
