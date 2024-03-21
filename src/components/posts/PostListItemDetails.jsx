@@ -9,6 +9,7 @@ export default function PostListItemDetails() {
 
   const [post, setPost] = useState({});
   const [reviews, setReviews] = useState([]);
+  const [allowedReview, setAllowedReview] = useState(true);
   const [reviewForm, setReviewForm] = useState({
     message: '',
     rating: 0,
@@ -31,8 +32,14 @@ export default function PostListItemDetails() {
       setReviews(reviewData.data);
       console.log(postData.data);
       console.log("REVIEWS: ", reviewData.data);
-      setLoading(false);
+      const userReview = reviews.find(review => review.user.id == user.id);
+      console.log("USER REVIEW: ", userReview)
 
+      if(userReview){
+        console.log("USER HAS REVIEWED THIS POST");
+        setAllowedReview(false);
+      }
+      setLoading(false);
     })
     .catch(error => {
       console.error('Error fetching data:', error);
@@ -47,11 +54,28 @@ export default function PostListItemDetails() {
     });
   };
 
+  const handleDebug = () => {
+    console.log("DEBUG: POST", post);
+    console.log("DEBUG: REVIEWS", reviews);
+    console.log("DEBUG: REVIEW FORM", reviewForm);
+    console.log("DEBUG: USER", user)
+    const userReview = reviews.find(review => review.user.id == user.id);
+    console.log("DEBUG: USER REVIEW", userReview)
+  }
+
   const handleSubmit = async () => {
+
+      // check if user is in review array, ifit is, dont
+      // allow them to add another review
+      const userReview = reviews.find(review => review.user.id == user.id);
+      console.log("USER REVIEW: ", userReview)
+
+      if(userReview){
+        throw new Error('User has already reviewed this post');
+      }
+
+
     try {
-
-
-
       const response = await fetch(`http://localhost:4000/posts/${id}/reviews`, {
         method: 'POST',
         headers: {
@@ -72,6 +96,7 @@ export default function PostListItemDetails() {
         message: '',
         rating: 0,
       });
+      setAllowedReview(false);
     } catch (error) {
       console.error('Unable to add review:', error);
     }
@@ -131,7 +156,8 @@ export default function PostListItemDetails() {
               </div>
             ))}
             {/* Add a review form */}
-            <div className='createReviewContainer'>
+            {allowedReview ? (
+              <div className='createReviewContainer'>
               <div>
                 <textarea type='text' placeholder='Add a review' value={reviewForm.message} onChange={handleMessageChange} className='reviewText' />
                 <Rating initialValue={reviewForm.rating} 
@@ -142,7 +168,15 @@ export default function PostListItemDetails() {
               <div className='sidebarButton' onClick={handleSubmit} >
                 <p>Add a review</p>
               </div>
+              <div className='sidebarButton' onClick={handleDebug} >
+                <p>DEBUG</p>
+              </div>
             </div>
+            ) : (
+              <div className='alreadyVoted'>
+                {/* User has already voted */}
+              </div>
+            )}
           </div>
         </>
       )}
