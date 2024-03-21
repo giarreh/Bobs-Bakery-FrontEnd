@@ -154,7 +154,7 @@ export default function CreatePost() {
   
 
     try {
-      console.log('USER:', user?.token)
+      console.log('AUTH TOKEN:', getAuthToken())
       fetch('http://localhost:4000/posts', {
       method: 'POST',
       headers: {
@@ -167,12 +167,9 @@ export default function CreatePost() {
     .then(response => response.json())
     .then(data => {
       console.log('Success:', data);
-      setPosts([formData, ...posts]);
-      alert('Post created successfully');
+      setPosts([...posts, formData]);
       navigate(`/posts/${data.data.id}`)
-    })
-    console.log(formData);
-      
+    })      
     } catch (error) {
       console.error('Error:', error);
       alert('Error creating post');

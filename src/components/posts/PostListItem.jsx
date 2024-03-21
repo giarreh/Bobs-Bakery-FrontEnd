@@ -7,6 +7,9 @@ export default function PostListItem({ post }) {
   const navigate = useNavigate();
 
   const calculateAverageRating = () => {
+    if(post?.reviews.length === 0) {
+      return 0;
+    }
     if (post?.reviews && post?.reviews.length > 0) {
       // Calculate sum of ratings
       const sum = post?.reviews.reduce((acc, review) => acc + review.rating, 0);

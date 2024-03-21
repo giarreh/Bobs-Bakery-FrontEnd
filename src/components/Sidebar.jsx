@@ -12,9 +12,10 @@ function Sidebar() {
   }
 
 
+
   return (
     <div className="sidebar">
-      <div className='sidebarButton' >
+      <div className='sidebarButton' onClick={() => navigate("/top")} >
         <h3>Top Posts</h3>
       </div>
       <div className='sidebarButton' onClick={randomPost} >

@@ -11,6 +11,7 @@ import Login from './components/auth/Login';
 import UserProfile from './components/profiles/UserProfile';
 import PostListItemDetails from './components/posts/PostListItemDetails';
 import CreatePost from './components/posts/CreatePost/CreatePost';
+import TopPosts from './components/filteredposts/TopPosts';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
               <Route element={<PrivateRoutes/>}>
                 <Route path="/" element={<PostList />} />
                 <Route path="/posts" element={<PostList />} />
+                <Route path='/top' element={<TopPosts />} />
                 <Route path='posts/:id' element={<PostListItemDetails />} />
                 <Route path='/create' element={<CreatePost />} />
                 <Route path='/me' element={<UserProfile />} />

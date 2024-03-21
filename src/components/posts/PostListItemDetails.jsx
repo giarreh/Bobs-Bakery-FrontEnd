@@ -212,7 +212,7 @@ export default function PostListItemDetails() {
       )}
         {/*if post.user.id == user.id, add div with delete text */}
         {post.user?.id == user.id && (
-          <div className='deletePost' onClick={handleDeletePost(post)}>
+          <div className='sidebarButton' onClick={handleDeletePost(post)}>
             <p>Delete post</p>
           </div>
         )}
