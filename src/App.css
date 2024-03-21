@@ -7,14 +7,14 @@
 
 /* Sidebar styles */
 .sidebar {
-  color: #fff;
+  color: #dd7230;
   padding: 20px;
   margin-top: 2px;
   border-right: 1px solid black;
 }
 
 .sidebarButton {
-  background-color: #ff6b6b;
+  background-color: #dd7230;
   color: #fff;
   padding: 10px;
   border: none;
@@ -26,7 +26,7 @@
 
 /* Header styles */
 .header {
-  background-color: #FFA500;
+  background-color:#854d27;
   color: #fff;
   padding: 10px;
   text-align: center;

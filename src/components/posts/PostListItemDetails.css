@@ -1,5 +1,5 @@
 .container {
-  background-color: whitesmoke;
+  background-color: #e7e393;
   padding: 2rem;
   border: 2px solid black;
   border-radius: 15px;
@@ -77,7 +77,7 @@
   border: 1px solid black;
   border-radius: 5px;
   margin: 2rem;
-  background-color: antiquewhite;
+  background-color: #f1dabf;
 }
 .reviewHeader {
   display: flex;
@@ -120,6 +120,7 @@
   height: 5rem;
   resize: none;
   font-size: large;
+  
 }
 
 .alreadyVoted {

@@ -3,7 +3,8 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  color:white;
+  color:black;
+  background-color: #e7e393;
   border: 1px solid #ccc;
   border-radius: 25px;
   animation: fadeInUp 0.5s ease forwards; /* Apply animation */
@@ -100,7 +101,7 @@
 }
 
 .postForm button {
-  background-color: #007bff;
+  background-color: #dd7230;
   color: #fff;
   border: none;
   border-radius: 4px;

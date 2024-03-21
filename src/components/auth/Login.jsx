@@ -47,7 +47,7 @@ export default function Login() {
           <input 
           type="text" required 
           value={userForm.username}
-          placeholder='username'
+          placeholder='Username'
           onChange={(e) => setUserForm({...userForm, username: e.target.value})}
           />
         </div>

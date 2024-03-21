@@ -215,14 +215,14 @@ export default function PostListItemDetails() {
             {/* Add a review form */}
             {allowedReview ? (
               <div className='createReviewContainer'>
-              <div className='createReviewTextAndStar'>
+                <div className='createReviewTextAndStar'>
                 <p>Rate this recipe!</p>
                 <textarea type='text' placeholder='Add a review' value={reviewForm.message} onChange={handleMessageChange} className='reviewText' />
                 <Rating initialValue={reviewForm.rating} 
                   onClick={(rate) => setReviewForm({...reviewForm, rating: rate})}
                   size={30}
                   />
-              </div>
+                </div>
               <div className='sidebarButton' onClick={handleSubmit} >
                 <p>Add a review</p>
               </div>
