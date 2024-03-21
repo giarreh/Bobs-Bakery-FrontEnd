@@ -191,8 +191,10 @@ export default function CreatePost() {
             <label htmlFor='description'>Description</label>
             <textarea id='description' name='description' value={formData.description} onChange={handleChange} className='description' />
           </div>
-
-
+          <div>
+            <label htmlFor='imageUrl'>Image URL</label>
+            <input type='text' id='imageUrl' name='imageUrl' value={formData.imageUrl} onChange={handleChange} />
+          </div>
 
           <div className='IngredientsContainer'>
             <label htmlFor='ingredients'>Ingredients</label>
@@ -252,13 +254,13 @@ export default function CreatePost() {
             <div className='difficulty'>
             <label htmlFor='difficulty'>Difficulty</label>
               <div className='difficultyButtons'>
-              <button type='button' onClick={() => handleDifficulty('easy')} className={formData.difficulty === 'easy' ? 'selected' : ''}>
+              <button type='button' onClick={() => handleDifficulty('Easy')} className={formData.difficulty === 'Easy' ? 'selected' : ''}>
                   Easy
                 </button>
-                <button type='button' onClick={() => handleDifficulty('medium')} className={formData.difficulty === 'medium' ? 'selected' : ''}>
+                <button type='button' onClick={() => handleDifficulty('Medium')} className={formData.difficulty === 'Medium' ? 'selected' : ''}>
                   Medium
                 </button>
-                <button type='button' onClick={() => handleDifficulty('hard')} className={formData.difficulty === 'hard' ? 'selected' : ''}>
+                <button type='button' onClick={() => handleDifficulty('Hard')} className={formData.difficulty === 'Hard' ? 'selected' : ''}>
                   Hard
                 </button>
               </div>

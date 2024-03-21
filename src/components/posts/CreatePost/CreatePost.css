@@ -111,7 +111,7 @@
 }
 
 .postForm button:hover {
-  background-color: #0056b3;
+  background-color: #eeb252;
 }
 
 .buttonIngredients {
@@ -155,7 +155,7 @@
 }
 
 .difficultyButtons .selected {
-  background-color: green;
+  background-color: #eeb252;
   color: #fff;
 }
 .difficultyButtons .selected:hover {
@@ -180,5 +180,8 @@
   margin-bottom: 10px;
   text-align: center;
   width: 100px;
+}
 
+.submitButton:hover {
+  background-color: #b3e77e;
 }
