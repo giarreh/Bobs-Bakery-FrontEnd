@@ -115,6 +115,13 @@
   margin: 5px;
 }
 
+.reviewText {
+  width: 20rem;
+  height: 5rem;
+  resize: none;
+  font-size: large;
+}
+
 .alreadyVoted {
   display: flex;
   justify-content: center;
