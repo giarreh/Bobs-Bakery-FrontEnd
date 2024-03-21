@@ -45,7 +45,7 @@ export default function PostListItemDetails() {
       console.error('Error fetching data:', error);
       setLoading(false);
     });
-  }, [id, posts]);
+  }, [id, posts,]);
 
   const handleMessageChange = (e) => {
     setReviewForm({
@@ -53,6 +53,27 @@ export default function PostListItemDetails() {
       message: e.target.value,
     });
   };
+
+  const handleDelete = (review) => async () => {
+    try {
+      const response = await fetch(`http://localhost:4000/posts/${id}/reviews/${review.id}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${getAuthToken()}`,
+        },
+      });
+
+      if (!response.ok) {
+        return console.error('Unable to delete review:', response);
+      }
+
+      setReviews(reviews.filter(r => r.id !== review.id));
+      setAllowedReview(true);
+    } catch (error) {
+      console.error('Unable to delete review:', error);
+    }
+  };
+
 
   const handleDebug = () => {
     console.log("DEBUG: POST", post);
@@ -144,12 +165,18 @@ export default function PostListItemDetails() {
                     <div>
                       <p>Rating: </p>
                     </div>
-                    <div>          
+                    <div className='reviewRatingBottom'>          
                       <Rating initialValue={review.rating} 
                       readonly={true}
                       allowFraction={true}
                       size={20}
                       />
+                      {/* if the user.id is the same as review.user.id, render a delete button */}
+                      {user.id == review.user.id && (
+                        <div className='deleteReview' onClick={handleDelete(review)}>
+                          <p>Delete</p>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -168,6 +195,9 @@ export default function PostListItemDetails() {
               <div className='sidebarButton' onClick={handleSubmit} >
                 <p>Add a review</p>
               </div>
+
+
+
               <div className='sidebarButton' onClick={handleDebug} >
                 <p>DEBUG</p>
               </div>

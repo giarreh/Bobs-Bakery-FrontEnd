@@ -72,3 +72,27 @@
   align-items: center;
   margin-top: 1rem;
 }
+
+.reviewRatingBottom {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+}
+
+.deleteReview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.deleteReview p {
+  padding: 0;
+  margin: 1rem
+}
