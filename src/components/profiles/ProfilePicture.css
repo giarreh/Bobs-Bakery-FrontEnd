@@ -12,3 +12,16 @@
   margin-right: 20px;
   cursor:pointer;
 }
+
+.profile-picture-post {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 40px;
+  height:40px;
+  color: white;
+  font-size:large;
+  margin-right: 5px;
+  cursor:pointer;
+}

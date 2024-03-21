@@ -8,6 +8,7 @@ import { UserContext } from '../../context/UserContext';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import SpeedIcon from '@mui/icons-material/Speed';
+import ProfilePicture from '../profiles/ProfilePictureID';
 
 export default function PostListItemDetails() {
 
@@ -186,8 +187,13 @@ export default function PostListItemDetails() {
             {reviews.map((review, index) => (
               <div key={index} className='review'>
                 <div className='reviewHeader'>
-                  <p>{review.user.firstName} {review.user.lastName}</p>
-                  <p>{review.createdAt}</p>
+                  <div className='reviewHeaderDiv1'>
+                  <ProfilePicture initials={review.user?.firstName[0] + review.user?.lastName[0]} color={review.user?.favoriteColor}/>
+                  <p>{review.user?.firstName} {review.user?.lastName}</p>
+                  </div>
+                  <div>
+                    <p>{review.createdAt}</p>
+                  </div>
                 </div>
                 <div className='reviewHeader2'>
                   <p>{review.message}</p>
