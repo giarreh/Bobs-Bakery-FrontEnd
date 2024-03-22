@@ -10,14 +10,14 @@ export default function PostListItem({ post }) {
   const navigate = useNavigate();
 
   const calculateAverageRating = () => {
-    if(post?.reviews.length === 0) {
+    if(post?.reviews?.length === 0) {
       return 0;
     }
-    if (post?.reviews && post?.reviews.length > 0) {
+    if (post?.reviews && post?.reviews?.length > 0) {
       // Calculate sum of ratings
-      const sum = post?.reviews.reduce((acc, review) => acc + review.rating, 0);
+      const sum = post?.reviews?.reduce((acc, review) => acc + review?.rating, 0);
       // Calculate average rating
-      const average = sum / post?.reviews.length;
+      const average = sum / post?.reviews?.length;
       return average.toFixed(1); // Return average rating rounded to 1 decimal place
     } else {
       return 'No reviews yet';

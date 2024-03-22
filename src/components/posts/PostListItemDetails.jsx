@@ -79,18 +79,17 @@ export default function PostListItemDetails() {
   };
 
   const handleDeletePost = (post) => async () => {
-    const response = await fetch(`http://localhost:4000/posts/${post.id}`, {
+    await fetch(`http://localhost:4000/posts/${post.id}`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${getAuthToken()}`,
       },
-    }).then(() => {
-      console.log("DELETED POST: ", post)
-      // Remove the post from the list of posts
+    })
+    .then(() => {
       setPosts(posts.filter(p => p.id !== post.id));
       setAllowedReview(true);
     }).then(
-      () => navigate('/'));
+      () => navigate('/posts'));
   };
 
 

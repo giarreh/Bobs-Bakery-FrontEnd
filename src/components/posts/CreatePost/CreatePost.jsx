@@ -24,6 +24,45 @@ export default function CreatePost() {
     imageUrl: '',
   });
 
+  const handleDemo = () => {
+
+    setFormData({
+      title: 'Vegan Pizza',
+      description: 'Simple and delicious vegan pizza made in under 40 minutes',
+      ingredients: [
+      '1/2 of one Trader Joe’s garlic-herb pizza crust ',
+      '60 g each red, green, and orange bell pepper (loosely chopped)',
+      '1/3 medium red onion (chopped)',
+      '70 g button mushrooms (chopped)',
+      '1/2 tsp each dried or fresh basil, oregano, and garlic powder',
+      '1/4 tsp sea salt',
+    ], 
+      instructions: [`Preheat oven to 425 degrees F (218 C) and position a rack in the middle of the oven.`,
+      `Bring large skillet to medium heat. Once hot, add 1 Tbsp olive oil (amount as original recipe is written // adjust if altering batch size), onion and peppers. Season with salt, herbs and stir. Cook until soft and slightly charred – 10-15 minutes, adding the mushrooms in the last few minutes. Set aside.`,
+      
+      `Prepare sauce by adding tomato sauce to a mixing bowl and adding seasonings and salt to taste. Adjust seasonings as needed. Set aside. Note: If using tomato paste, add water to thin until desired consistency is reached.`,
+
+      `Prepare vegan parmesan if you haven’t already by blitzing raw cashews, sea salt, nutritional yeast and garlic powder in a food processor until a fine meal is reached. Transfer to jar and refrigerate to keep fresh.`,
+
+      `Roll out dough onto a floured surface and transfer to a parchment-lined round baking sheet. You’re going to add the pizza WITH the parchment directly to the oven to properly crisp the crust, so any round object will do as it’s not actually going into the oven (I use a wood board).`,
+
+      `Top with desired amount of tomato sauce (you’ll have leftovers, which you can store in a jar for later use), a sprinkle of parmesan cheese and the sautéed veggies.`,
+
+      `Use the baking sheet to gently slide the pizza (WITH the parchment underneath) directly onto the oven rack. The parchment will help prevent it from falling through.`,
+
+      `Bake for 17-20 minutes or until crisp and golden brown.`,
+
+      `Serve with remaining parmesan cheese, dried oregano and red pepper flake. Leftovers keep well – no need to reheat! Cold pizza is yum.`],
+      category: 'Dinner',
+      bakingTime: '40',
+      calories: '520',
+      difficulty: 'Easy',
+      recipeTags: ['Vegan', 'Pizza', 'Dinner'],
+      imageUrl: 'https://lifemadesweeter.com/wp-content/uploads/Vegetable-Pizza-Recipe-Photo-Picture-Vegan-500x500.jpg',
+    });
+
+  }
+
   const handleDifficulty = (value) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -167,7 +206,7 @@ export default function CreatePost() {
     .then(response => response.json())
     .then(data => {
       console.log('Success:', data);
-      setPosts([formData, ...posts]);
+      setPosts([...posts, formData]);
       navigate(`/posts/${data.data.id}`)
     })      
     } catch (error) {
@@ -181,7 +220,7 @@ export default function CreatePost() {
     <div className='createPostContainer'>
       <div className='postForm'>
       <h1>Create a new post</h1>
-
+      <button onClick={handleDemo}>Demo</button>
         <form>
           <div>
             <label htmlFor='title'>Title</label>
@@ -285,9 +324,9 @@ export default function CreatePost() {
               className='buttonIngredients'>Remove last</button>
             </div>
           </div>
-
           <div className='submitButton' onClick={handleSubmit} >Create post</div>
         </form>
+        <div className='submitButton' onClick={() => console.log(formData)}>DEBUG</div>
       </div>
     </div>
   );
