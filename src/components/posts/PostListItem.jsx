@@ -24,8 +24,13 @@ export default function PostListItem({ post }) {
     }
   };
 
+  const handleNavigate = () => {
+    console.log(post);
+    navigate(`/posts/${post?.id}`)
+  }
+
   return (
-    <div className='postContainer' onClick={() => navigate(`/posts/${post?.id}`)} >
+    <div className='postContainer' onClick={handleNavigate} >
       <div>
         <img className='postImage' src={post?.imageUrl} alt="No image found" />
       </div>

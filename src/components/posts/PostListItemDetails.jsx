@@ -24,6 +24,7 @@ export default function PostListItemDetails() {
   const { id } = useParams();
   const { posts, setPosts } = useContext(AppContext);
   const { getAuthToken, user } = useContext(UserContext);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -79,17 +80,18 @@ export default function PostListItemDetails() {
   };
 
   const handleDeletePost = (post) => async () => {
-    await fetch(`http://localhost:4000/posts/${post.id}`, {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${getAuthToken()}`,
-      },
-    })
-    .then(() => {
+    try {
+      const response = await fetch(`http://localhost:4000/posts/${post.id}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${getAuthToken()}`,
+        },
+      });
       setPosts(posts.filter(p => p.id !== post.id));
-      setAllowedReview(true);
-    }).then(
-      () => navigate('/posts'));
+      navigate('/');
+    } catch (error) {
+      console.error('Unable to delete post:', error);
+    }
   };
 
 
