@@ -18,7 +18,7 @@ export default function PostList() {
       }
     };
     fetchData();
-  }, [posts]);
+  }, []);
 
   return (
     <div>
